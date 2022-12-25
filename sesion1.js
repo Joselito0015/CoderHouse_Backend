@@ -12,7 +12,6 @@ class ProductManager{
 
     addProduct=(title,description,price,thumbnail,code,stock)=>{
         const producto= {   
-            id:this.id++,
             title: title,
             description: description,
             price: price,
@@ -22,13 +21,20 @@ class ProductManager{
         }
 
 
-        if (this.products.some(p => p.code === product.code)) {
-            console.log('Product code already exists');
-          }
+        const encontrado= this.productos.find(product=>{
+            let {id,...rest} = product;
+            rest === producto
+        } )
 
-        this.productos.push(producto)
-       
 
+
+        if (encontrado || this.productos.length==0){
+            producto.id = this.id++;
+            this.productos.push(producto)
+        }
+        else{
+            console.log("Producto ya existe")
+        }
     }
 
 
@@ -36,6 +42,9 @@ class ProductManager{
         const product = this.productos.find(p => p.id === id);
         if (!product) {
             console.log('Producto no encontrado')
+        }
+        else{
+            console.log(product)            
         }
     }
 
@@ -66,7 +75,4 @@ manager.addProduct(
     stock=25
 )
 
-manager.getProducts()
-
-
-manager.getProductById(5)
+manager.getProductById(1)
