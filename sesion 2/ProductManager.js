@@ -160,55 +160,53 @@ class ProductManager{
 //Instanciamos al manager
 manager=new ProductManager()
 
-//Obtenemos los productos
-// manager.getProducts()
+// Obtenemos los productos
+manager.getProducts()
     
-// manager.addProduct(
-// title= "producto prueba",
-// description="Este es un producto prueba",
-// price=200,
-// thumbnail="Sin imagen",
-// code="afasssfsd",
-// stock=25
-// )
+manager.addProduct(
+    title= "producto prueba",
+    description="Este es un producto prueba",
+    price=200,
+    thumbnail="Sin imagen",
+    code="afasssfsd",
+    stock=25
+)
 
-// //Agregamos un nuevo producto
-// manager.addProduct(
-//     title= "producto prueba",
-//     description="Este es un producto prueba",
-//     price=200,
-//     thumbnail="Sin imagen",
-//     code="sddasddaa",
-//     stock=25
-// )
+//Agregamos un nuevo producto
+manager.addProduct(
+    title= "producto prueba",
+    description="Este es un producto prueba",
+    price=200,
+    thumbnail="Sin imagen",
+    code="sddasddaa",
+    stock=25
+)
 
-// //Obtenemos los productos
-// manager.getProducts()
+//Obtenemos los productos
+manager.getProducts()
 
-// // //Agregamos el mismo producto previamente agregado
-// manager.addProduct(
-//     title= "producto prueba",
-//     description="Este es un producto prueba",
-//     price=200,
-//     thumbnail="Sin imagen",
-//     code="adsadasff",
-//     stock=25
-// )
+// //Agregamos el mismo producto previamente agregado
+manager.addProduct(
+    title= "producto prueba",
+    description="Este es un producto prueba",
+    price=200,
+    thumbnail="Sin imagen",
+    code="adsadasff",
+    stock=25
+)
 
-// // Preguntamos por un producto fuera del array
-// manager.getProductById(5)
+// Preguntamos por un producto fuera del array
+manager.getProductById(5)
 
-// manager.deleteProductById(1)
+manager.deleteProductById(1)
 
 
 // Simulación de la entrada de parámetros para actualización
-
-let id=4
-let title="Funcional"
-let description=undefined
-let price=undefined
-let thumbnail=undefined
-let code=undefined
-let stock=undefined
-
-manager.updateProductById(id,title, description, price , thumbnail , code , stock )
+// En caso no se desee actualizar se cambiará el valor de undefined por un valor deseado
+manager.updateProductById(id=4,
+                        title="Funcional",
+                        description=undefined,
+                        price=undefined,
+                        thumbnail=undefined,
+                        code=undefined,
+                        stock=undefined)
