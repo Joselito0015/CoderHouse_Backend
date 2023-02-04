@@ -1,0 +1,38 @@
+[
+	{
+		"title": "carrera de caballos",
+		"description": "Este es un producto prueba",
+		"price": 200,
+		"thumbnail": "Sin imagen",
+		"code": "sdda",
+		"stock": 25,
+		"id": 2
+	},
+	{
+		"title": "Funcional",
+		"description": "Este es un producto prueba",
+		"price": 200,
+		"thumbnail": "Sin imagen",
+		"code": "afasssfsd",
+		"stock": 25,
+		"id": 4
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 200,
+		"thumbnail": "Sin imagen",
+		"code": "adsadasff",
+		"stock": 25,
+		"id": 6
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 200,
+		"thumbnail": "Sin imagen",
+		"code": "sddasddaa",
+		"stock": 25,
+		"id": 7
+	}
+]

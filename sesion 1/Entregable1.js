@@ -15,9 +15,6 @@ class ProductManager{
 
 
     addProduct=(title,description,price,thumbnail,code,stock)=>{
-
-
-
         //Validación de parametros
         if (!isNaN(stock) && !isNaN(price) && thumbnail.trim().length > 0 && code.trim().length > 0 && description.trim().length > 0 && title.trim().length > 0 ){
             if (price>0 && stock>0){
@@ -53,8 +50,6 @@ class ProductManager{
         {
             console.log("Error al validad parámetros")
         }
-
-
     }
 
     getProductById(id) {
