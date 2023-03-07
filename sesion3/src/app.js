@@ -13,7 +13,6 @@ app.use(express.json())
 app.get('/products', async (req,res) =>{
     const products= await manager.getProducts()
     
-
     const limit =req.query.limit
     if (limit){
         res.send(products.slice(0,limit))
@@ -31,6 +30,9 @@ app.get('/products/:pid', async (req,res) =>{
     const product = await manager.getProductById(id)
     res.json(product)  
 })
+
+
+
 
 
 app.listen(port,()=>{

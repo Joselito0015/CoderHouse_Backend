@@ -1,0 +1,209 @@
+[
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 212,
+		"thumbnail": "Sin imagen",
+		"code": "#00121",
+		"stock": 25,
+		"id": 1
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 122,
+		"thumbnail": "Sin imagen",
+		"code": "#00122",
+		"stock": 25,
+		"id": 2
+	},
+	{
+		"title": "producto prueba",
+		"description": "Haciendo actualización!!!",
+		"price": "2542",
+		"thumbnail": "Sin imagen",
+		"code": "#00123",
+		"stock": 25,
+		"id": 3
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 212,
+		"thumbnail": "Sin imagen",
+		"code": "#00124",
+		"stock": 25,
+		"id": 4
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 412,
+		"thumbnail": "Sin imagen",
+		"code": "#00125",
+		"stock": 25,
+		"id": 5
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 203,
+		"thumbnail": "Sin imagen",
+		"code": "#00126",
+		"stock": 25,
+		"id": 6
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 223,
+		"thumbnail": "Sin imagen",
+		"code": "#00127",
+		"stock": 25,
+		"id": 7
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 123,
+		"thumbnail": "Sin imagen",
+		"code": "#00128",
+		"stock": 25,
+		"id": 8
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 432,
+		"thumbnail": "Sin imagen",
+		"code": "#00129",
+		"stock": 25,
+		"id": 9
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 223,
+		"thumbnail": "Sin imagen",
+		"code": "#00130",
+		"stock": 25,
+		"id": 10
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 203,
+		"thumbnail": "Sin imagen",
+		"code": "#00131",
+		"stock": 25,
+		"id": 11
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 243,
+		"thumbnail": "Sin imagen",
+		"code": "#00132",
+		"stock": 25,
+		"id": 12
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 212,
+		"thumbnail": "Sin imagen",
+		"code": "#00133",
+		"stock": 25,
+		"id": 13
+	},
+	{
+		"title": "producto prueba",
+		"description": "Este es un producto prueba",
+		"price": 232,
+		"thumbnail": "Sin imagen",
+		"code": "#00134",
+		"stock": 25,
+		"id": 14
+	},
+	{
+		"title": "zapatos",
+		"description": "Lo que te pones en los pies",
+		"price": "250",
+		"thumbnail": "pruebita",
+		"code": "0151",
+		"stock": "50",
+		"id": 15
+	},
+	{
+		"title": "zapatos",
+		"description": "Lo que te pones en los pies",
+		"price": "250",
+		"thumbnail": "pruebita",
+		"code": "01512",
+		"stock": "50",
+		"id": 16
+	},
+	{
+		"title": "zapatos",
+		"description": "Lo que te pones en los pies",
+		"price": "250",
+		"thumbnail": "pruebita",
+		"code": "015121",
+		"stock": "50",
+		"id": 17
+	},
+	{
+		"title": "zapatos",
+		"description": "Lo que te pones en los pies",
+		"price": "250",
+		"thumbnail": "Falta thumbanil",
+		"code": "0152",
+		"stock": "50",
+		"id": 18
+	},
+	{
+		"title": "zapatos",
+		"description": "Lo que te pones en los pies",
+		"price": "250",
+		"thumbnail": "Falta thumbanil",
+		"code": "01524",
+		"stock": "50",
+		"id": 19
+	},
+	{
+		"title": "zapatos",
+		"description": "Lo que te pones en los pies",
+		"price": "250",
+		"thumbnail": "Falta thumbanil",
+		"code": "015241",
+		"stock": "50",
+		"id": 20
+	},
+	{
+		"title": "zapatos",
+		"description": "Lo que te pones en los pies",
+		"price": "250",
+		"thumbnail": "Falta thumbanil",
+		"code": "0152411",
+		"stock": "50",
+		"id": 21
+	},
+	{
+		"title": "zapatos",
+		"description": "Lo que te pones en los pies",
+		"price": "250",
+		"thumbnail": "Falta thumbanil",
+		"code": "0152411123",
+		"stock": "50",
+		"id": 22
+	},
+	{
+		"title": "zapatos",
+		"description": "Lo que te pones en los pies",
+		"price": "250",
+		"thumbnail": "pruebita21",
+		"code": "01524111231",
+		"stock": "50",
+		"id": 23
+	}
+]

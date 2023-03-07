@@ -9,7 +9,7 @@ class ProductManager{
         this.id=0
     
         //PATH de la ubicación de la persistencia de datos
-        this.path="./src/public/DB/ProductBD.json"
+        this.path="./public/DB/ProductBD.json"
 
         //Creamos una nueva BD en caso no se encuentre
         this.createJson()
@@ -21,7 +21,7 @@ class ProductManager{
             fs.writeFileSync(this.path, JSON.stringify(empityList), ()=>console.log("Creando Nuevo archivo JSON"))
         }
         else {
-            console.log("Archivo JSON existe")
+            return "Archivo JSON existe"
         }
     }
 
@@ -36,7 +36,7 @@ class ProductManager{
             return list_products  //Retornamos productos
         }
         else {
-            console.log("Archivo JSON No existe")
+            return "Archivo JSON No existe"
         }
     }
 
@@ -50,23 +50,26 @@ class ProductManager{
         fs.writeFileSync( this.path,JSON.stringify(list_products, null, '\t'), 'utf-8')
     }
 
-    addProduct= (title,description,price,thumbnail,code,stock)=>{
+    addProduct= (title,description,price,thumbnail,code,stock,category)=>{
         //Validación de parametros
-        if (!isNaN(stock) && !isNaN(price) && code.trim().length > 0 && description.trim().length > 0 && title.trim().length > 0 ){
+        if (!isNaN(stock) && !isNaN(price) && code.trim().length > 0 && description.trim().length > 0 && category.trim().length > 0  && title.trim().length > 0 ){
             if (price>0 && stock>0){
 
-                if (thumbnail===undefined) {
-                    thumbnail="Falta thumbanil"
-                }
+            
+            if (thumbnail===undefined) {
+                thumbnail=[]
+            }        
 
-                //Creamos la estructura del producto
-                const producto= {   
-                    title: title,
-                    description: description,
-                    price: price,
-                    thumbnail: thumbnail,
-                    code: code,
-                    stock: stock
+            //Creamos la estructura del producto
+            const producto= {   
+                title: title,
+                description: description,
+                price: price,
+                thumbnail: thumbnail,
+                code: code,
+                stock: stock,
+                category:category,
+                status:true
             }
 
             //Buscamos por los productos hasta encontrar el coincidente
@@ -80,19 +83,20 @@ class ProductManager{
 
             //En caso encontremos un producto coincidente o el array de productos esté vacio 
             if (encontrado){
-                console.log("El codigo ya existe")
+                return "Error, el producto ya existe"
             }
             else{
                 //Incrementamos el Id Global del manager y lo agregamos a la estructura del producto
                 producto.id = listProducts.length ===0 ? 1 :  listProducts[listProducts.length-1].id + 1 
                 this.saveProduct(producto)
+                return "Producto guardado con éxito"
                 }
             }
         }
 
         else
         {
-            console.log("Error al validad parámetros")
+            return "Error al validad parámetros"
         }
     }
 
@@ -101,7 +105,7 @@ class ProductManager{
         const listProducts=this.getProducts()
         const product = listProducts.find(p => p.id === id); //Buscamos en la lista de productos un producto con ID coincidente
         if (!product) {//En caso no encontremos un producto con ID coincidente
-            console.log('Not Found')
+            return []
         }
         else{
             console.log(product) //Entregamos el producto encontrado      
@@ -114,7 +118,7 @@ class ProductManager{
     deleteProductById(id){
 
         const listProducts=this.getProducts()
-        const indexProduct = listProducts.findIndex(p => p.id === id); //Buscamos en la lista de productos un producto con ID coincidente
+        const indexProduct = listProducts.findIndex(p => p.id == id); //Buscamos en la lista de productos un producto con ID coincidente
         
         console.log(indexProduct)
 
@@ -122,10 +126,10 @@ class ProductManager{
         if (indexProduct>=0)  {
         listProducts.splice(indexProduct,1)
         fs.writeFileSync( this.path,JSON.stringify(listProducts, null, '\t'), 'utf-8')
-        console.log("Se eliminó correctamente")
+        return "Se eliminó correctamente"
         }
         else {
-            console.log(`No se encontró producto con ID ${id}`)
+            return `No se encontró producto con ID ${id}`
         }
 
         
@@ -133,9 +137,9 @@ class ProductManager{
     }
 
 
-    updateProductById(id,title = undefined , description = undefined, price = undefined, thumbnail = undefined, code = undefined, stock = undefined){
+    updateProductById(id,title = undefined , description = undefined, price = undefined, thumbnail = undefined, code = undefined, stock = undefined, status = undefined, category = undefined){
         let listProducts=this.getProducts()
-        const indexProduct = listProducts.findIndex(p => p.id === id); //Buscamos en la lista de productos un producto con ID coincidente
+        const indexProduct = listProducts.findIndex(p => p.id == id); //Buscamos en la lista de productos un producto con ID coincidente
         
         console.log(indexProduct)
 
@@ -143,22 +147,25 @@ class ProductManager{
         console.log(listProducts[indexProduct])
 
         if (indexProduct>=0)  {
-        if (title!=undefined)       listProducts[indexProduct].title = title 
+        if (title!=undefined)       listProducts[indexProduct].title = title
         if (description!=undefined) listProducts[indexProduct].description  = description  
-        if (price!=undefined)       listProducts[indexProduct].price = price 
-        if (thumbnail!=undefined)   listProducts[indexProduct].thumbnail = thumbnail 
-        if (code!=undefined)        listProducts[indexProduct].code = code 
-        if (stock!=undefined)       listProducts[indexProduct].stock  = stock 
+        if (price!=undefined)       listProducts[indexProduct].price = JSON.parse(price)
+        if (thumbnail!=undefined)   listProducts[indexProduct].thumbnail = thumbnail
+        if (code!=undefined)        listProducts[indexProduct].code = JSON.parse(code)
+        if (stock!=undefined)       listProducts[indexProduct].stock  = JSON.parse(stock) 
+        if (status!=undefined)       listProducts[indexProduct].status  = JSON.parse(status) 
+        if (category!=undefined)       listProducts[indexProduct].category  = category
         
         fs.writeFileSync( this.path,JSON.stringify(listProducts, null, '\t'), 'utf-8')
-        console.log("Se actualizó correctamente")
-
-
         console.log(listProducts[indexProduct])
+        return "Se actualizó correctamente" 
+
+
+        
 
         }
         else {
-            console.log(`No se encontró producto con ID ${id}`)
+            return `No se encontró producto con ID ${id}`
         }
     }
 }
