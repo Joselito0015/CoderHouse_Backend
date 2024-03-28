@@ -3,14 +3,11 @@ const socket = io()
 
 const listProducts = document.getElementById('listProducts')
 
-
-
 // Obtener el formulario de edición
 const editForm = document.getElementById('edit-form');
 
 // Escuchar el evento submit del formulario de edición
 editForm.addEventListener('submit', async (event) => {
-  console.log("gassssasdasd")
   // Prevenir el comportamiento por defecto del formulario
   event.preventDefault();
 

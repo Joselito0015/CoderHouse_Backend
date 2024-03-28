@@ -2,16 +2,22 @@ const Product = require('../models/Products.model')
 
 class ProductDao{
 
-    find = async()=>{
-            // const data =  fs.readFileSync(this.path, ()=>console.log("Leyendo JSON file"))
-            try {
-                const products = await Product.find().lean()
-                return products
-            }
-            catch (error) {
-                return error
-            }
+    find = async ({ page = 1, limit = 10, sort = {}, query = {} }) => {
+        const options = {
+            page: parseInt(page, 10),
+            limit: parseInt(limit, 10),
+            sort: sort,
+            lean: true
+        };
+    
+        try {
+            const result = await Product.paginate(query, options);
+            return result; // Esto incluirá los documentos paginados y otra información como total de páginas, etc.
+        } catch (error) {
+            return error;
+        }
     }
+    
 
     create = async (producto)=>{
           
@@ -69,8 +75,11 @@ class ProductDao{
         const filter = { "_id": _id}
         
         try {
-            const response = await Product.updateOne(filter,rest)
-            return response
+            const updatedDocument = await Product.findOneAndUpdate(filter, rest, {
+                new: true, // Devuelve el documento actualizado
+                runValidators: true // Opcional: ejecuta las validaciones definidas en el esquema
+              });
+            return updatedDocument
         }
         catch (error) {
             return error
