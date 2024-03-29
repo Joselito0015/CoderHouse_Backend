@@ -7,10 +7,17 @@ const product = new Product
 
 const router = Router()
 
+//GET - ALL CARTS
+router.get('/', async (req,res) => {
+    const response = await cart.find()
+    res.json({resolve: response})
+})
+
+
 //GET - ONE CART BY REQ.PARAMS
 router.get('/:cid', async (req,res) => {
     const {cid} = req.params
-    const response = await cart.findOne(cid)
+    const response = await cart.findOnePopulate(cid)
     res.json({resolve: response})
 })
 
@@ -50,13 +57,14 @@ router.post('/:cid/product/:pid', async (req,res) => {
         }
 
         _cart.products.push(_product)
-        console.log(_cart)
+        console.log(_cart, "_cart")
         _response= await cart.updateOne(_cart)
         res.json({resolve: "Producto agregado con éxito",response: _response})
     }
     else{
     //aumentamos la candidad en uno
     _cart.products[indexProduct].quantity=_cart.products[indexProduct].quantity + 1
+    console.log(_cart.products[indexProduct].quantity, "quantity")
     //Buscamos el indice del carrito y volvemos a agregarlo
     _response= await cart.updateOne(_cart)
     res.json({resolve: "Producto aumentado",response: _response})
@@ -98,6 +106,7 @@ router.put('/:cid', async (req,res) => {
 router.put('/:cid/product/:pid', async (req,res) => {
     const {cid,pid} = req.params
     const {quantity} = req.body
+
     const _cart= await cart.findOne(cid)
     if (!_cart) {
         res.json({resolve: "Carrito no encontrado",response: _cart})

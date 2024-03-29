@@ -45,7 +45,8 @@ router.get('/', async (req, res) => {
     console.log(rest)
 
     // Renderizar la vista con los productos
-    res.render('home.handlebars', { products: products.docs, info: info });
+    // res.render('home.handlebars', { products: products.docs, info: info });
+    res.json({resolve:info})
 });
 
 

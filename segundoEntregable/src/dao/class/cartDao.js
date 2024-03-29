@@ -28,7 +28,18 @@ class cartDao{
     findOne = async(_id) => {
         const filter = { "_id": _id };
         try {
-            const cart = await Cart.findOne(filter).lean();
+            const cart = await Cart.findOne(filter).lean()
+            return cart
+        }
+        catch (error) {
+            return error
+        }
+    }
+
+    findOnePopulate = async(_id) => {
+        const filter = { "_id": _id };
+        try {
+            const cart = await Cart.findOne(filter).lean().populate('products._id').exec()
             return cart
         }
         catch (error) {
@@ -53,9 +64,13 @@ class cartDao{
     
         const {_id,...rest} = _Cart;
         const filter = { "_id": _id}
+        console.log(filter,"filter")
+        console.log(rest,"rest")
         
         try {
-            const response = await Cart.updateOne(filter,rest).lean()
+            const response = await Cart.updateOne(filter,rest, {
+                new: true, // Devuelve el documento actualizado
+              }).lean()
             return response
         }
         catch (error) {
