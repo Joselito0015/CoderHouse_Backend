@@ -27,7 +27,6 @@ router.post('/', async (req,res) => {
     const _cart= {   
         Products: [],
     }
-    
     const response = await cart.create(_cart)
     res.json({resolve: response})
 })
