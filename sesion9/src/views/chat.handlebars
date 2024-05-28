@@ -1,0 +1,21 @@
+<!-- Real time Chat html structure -->
+<div class="chat-container">
+    {{!-- div with chat title --}}
+    {{!-- div with input --}}
+        
+        <div class="chat-input">
+            <input type="text" id="chat-input" placeholder="Escribe un mensaje">
+        </div>  
+
+        {{!-- div with messages --}}
+    <div id="chat-messages"> 
+        <div class="message">
+            {{#each messages}}
+            <div class="message-content">
+                <p class="user-chat">{{this.usermail}}</p>
+                <p>{{this.message}}</p>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
