@@ -43,6 +43,12 @@ const getOneProduct = async (req, res) => {
 
 //POST - CREATE PRODUCT
 const createProduct = async (req, res) => {
+	//admin only
+	if (!req.user.role === "admin") {
+		return res.json({
+			resolve: "No tienes permisos para realizar esta acción",
+		});
+	}
 	const { title, description, price, thumbnail, code, stock, category } =
 		req.body;
 	const newProduct = {
@@ -61,6 +67,12 @@ const createProduct = async (req, res) => {
 
 //PUT - UPDATE PRODUCT
 const updateProduct = async (req, res) => {
+	//admin only
+	if (!req.user.role === "admin") {
+		return res.json({
+			resolve: "No tienes permisos para realizar esta acción",
+		});
+	}
 	const id = req.params.pid;
 	const {
 		title,
@@ -90,6 +102,12 @@ const updateProduct = async (req, res) => {
 
 //DELETE - DELETE PRODUCT
 const deleteProduct = async (req, res) => {
+	//admin only
+	if (!req.user.role === "admin") {
+		return res.json({
+			resolve: "No tienes permisos para realizar esta acción",
+		});
+	}
 	const id = req.params.pid;
 	const response = await Product.deleteOne(id);
 	res.json({ resolve: response });

@@ -1,8 +1,10 @@
 const Cart = require("../dao/class/cartDao");
 const Product = require("../dao/class/ProductDao");
+const Ticket = require("../dao/class/ticketDao");
 
 const cart = new Cart();
 const product = new Product();
+const ticket = new Ticket();
 
 const getAllCarts = async (req, res) => {
 	const response = await cart.find();
@@ -22,6 +24,12 @@ const createCart = async (req, res) => {
 };
 
 const addProductToCart = async (req, res) => {
+	//user only
+	if (req.user.role !== "user") {
+		return res.json({
+			resolve: "No tienes permisos para realizar esta acción",
+		});
+	}
 	const { cid, pid } = req.params;
 	const _cart = await cart.findOne(cid);
 	if (!_cart) {
@@ -107,6 +115,62 @@ const clearCart = async (req, res) => {
 	res.json({ resolve: "Carrito vacío", response: _response });
 };
 
+const purchaseCart = async (req, res) => {
+	const { cid } = req.params;
+	const _cart = await cart.findOne(cid);
+	if (!_cart) {
+		return res.json({ resolve: "Carrito no encontrado", response: _cart });
+	}
+
+	const products = _cart.products;
+	const productsToPurchase = [];
+	const productsNotPurchased = [];
+	let totalAmount = 0;
+
+	for (let i = 0; i < products.length; i++) {
+		const product = await product.findOne(products[i]._id);
+		if (!product) {
+			productsNotPurchased.push(products[i]._id);
+			continue;
+		}
+		if (product.stock >= products[i].quantity) {
+			product.stock -= products[i].quantity;
+			await product.save();
+			productsToPurchase.push(product);
+			totalAmount += product.price * products[i].quantity;
+		} else {
+			productsNotPurchased.push(products[i]._id);
+		}
+	}
+
+	if (productsToPurchase.length > 0) {
+		const ticket = {
+			purchaseDate: new Date(),
+			amount: totalAmount,
+			purchaser: req.user.email,
+		};
+
+		const _ticket = await ticket.create(ticket);
+
+		// Actualizar carrito con productos no comprados
+		_cart.products = _cart.products.filter((product) =>
+			productsNotPurchased.includes(product._id)
+		);
+		await _cart.save();
+
+		return res.json({
+			resolve: "Compra realizada",
+			response: _ticket,
+			notPurchased: productsNotPurchased,
+		});
+	} else {
+		return res.json({
+			resolve: "No se pudo realizar la compra",
+			notPurchased: productsNotPurchased,
+		});
+	}
+};
+
 module.exports = {
 	getAllCarts,
 	getCartById,
@@ -116,4 +180,5 @@ module.exports = {
 	updateCartWithProducts,
 	updateProductQuantity,
 	clearCart,
+	purchaseCart,
 };

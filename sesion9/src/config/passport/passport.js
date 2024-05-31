@@ -4,7 +4,7 @@ const crypto = require("crypto");
 const GithubStrategy = require("passport-github2").Strategy;
 const UserDao = require("../../dao/class/UserDao");
 const { createHash, validatePassword } = require("../../utils/bcrypt");
-
+const strategyJWT = require("./strategies/jwtStrategy");
 const userModel = new UserDao();
 
 //Passport trabaje con uno o mas middlewares
@@ -101,6 +101,8 @@ const initializePassport = () => {
 			}
 		)
 	);
+
+	passport.use("jwt", strategyJWT);
 };
 
 module.exports = initializePassport;

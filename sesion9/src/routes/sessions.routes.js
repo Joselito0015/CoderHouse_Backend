@@ -34,4 +34,17 @@ sessionsRouter.get(
 	githubSession
 );
 
+sessionsRouter.get("/current", passport.authenticate("jwt"), (req, res) => {
+	console.log(req);
+	res.status(200).send("Usuario logueado");
+});
+
+sessionsRouter.get(
+	"/testJWT",
+	passport.authenticate("jwt", { session: false }),
+	(req, res) => {
+		res.status(200).send(req.user);
+	}
+);
+
 module.exports = sessionsRouter;

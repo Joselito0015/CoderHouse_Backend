@@ -9,6 +9,7 @@ require("dotenv").config({
 const config = {
 	port: process.env.PORT,
 	mongoDB: process.env.MONGODB,
+	jwt_secret: process.env.JWT_SECRET,
 };
 
 console.log(config, "config");

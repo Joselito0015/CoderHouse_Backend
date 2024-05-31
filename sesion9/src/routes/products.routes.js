@@ -7,6 +7,8 @@ const {
 	deleteProduct,
 } = require("../controllers/controller.products");
 
+const passport = require("passport");
+
 //GET - ALL PRODUCTS
 
 const productsRouter = Router();
@@ -17,13 +19,25 @@ productsRouter.get("/", getAllProducts);
 productsRouter.get("/:pid", getOneProduct);
 
 //POST - CREATE PRODUCT
-productsRouter.post("/", createProduct);
+productsRouter.post(
+	"/",
+	passport.authenticate("jwt", { session: false }),
+	createProduct
+);
 
 //PUT - UPDATE PRODUCT
-productsRouter.put("/:pid", updateProduct);
+productsRouter.put(
+	"/:pid",
+	passport.authenticate("jwt", { session: false }),
+	updateProduct
+);
 
 //DELETE - DELETE PRODUCT
-productsRouter.delete("/:pid", deleteProduct);
+productsRouter.delete(
+	"/:pid",
+	passport.authenticate("jwt", { session: false }),
+	deleteProduct
+);
 
 console.log("productsRouter");
 
