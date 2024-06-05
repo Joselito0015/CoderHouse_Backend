@@ -1,0 +1,33 @@
+<form id="edit-form" action="POST" method="POST">
+  <label for="title">title</label>
+  <input type="text" name="title" id="title">
+  <label for="description">description</label>
+  <input type="text" name="description" id="description">
+  <label for="price">price</label>
+  <input type="text" name="price" id="price">
+  <label for="thumbnail">thumbnail</label>
+  <input type="text" name="thumbnail" id="thumbnail">
+  <label for="code">code</label>
+  <input type="text" name="code" id="code">
+  <label for="stock">stock</label>
+  <input type="text" name="stock" id="stock">
+  <label for="category">category</label>
+  <input type="text" name="category" id="category">
+  <button type="submit">ENVIAR</button>
+</form>
+
+<div>
+  {{products}}
+</div>
+
+<ul id="listProducts">
+  {{#each products}}
+    <li>{{this.title}}</li>
+    <li>{{this.description}}</li>
+    <li>{{this.price}}</li>
+    <li>{{this.thumbnail}}</li>
+    <li>{{this.code}}</li>
+    <li>{{this.stock}}</li>
+    <br>
+  {{/each}}
+</ul>
