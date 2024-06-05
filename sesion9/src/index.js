@@ -42,6 +42,6 @@ router(app);
 mongoConnect(app);
 
 //testing
-insertTestProducts();
+// insertTestProducts();
 
 module.exports = app;

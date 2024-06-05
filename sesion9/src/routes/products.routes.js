@@ -10,7 +10,6 @@ const {
 const passport = require("passport");
 
 //GET - ALL PRODUCTS
-
 const productsRouter = Router();
 
 productsRouter.get("/", getAllProducts);
