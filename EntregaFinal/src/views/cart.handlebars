@@ -1,0 +1,8 @@
+<!-- views/cart.handlebars -->
+<h1>Carrito de Compras</h1>
+<ul>
+	{{#each cart.products}}
+		<li>{{this.title}} - {{this.quantity}}</li>
+	{{/each}}
+</ul>
+<a href="/purchase">Proceder a la compra</a>
