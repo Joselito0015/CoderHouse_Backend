@@ -18,11 +18,11 @@ EMAIL_PASS=<tu_contraseña_de_correo>
 
 1. Clona el repositorio.
    ```bash
-   git clone <url_del_repositorio>
+   git clone https://github.com/Joselito0015/CoderHouse_Backend.git
    ```
 2. Instala las dependencias.
    ```bash
-   cd <nombre_del_proyecto>
+   cd CoderHouse_Backend
    npm install
    ```
 3. Crea el archivo `.env.development` con las variables de entorno mencionadas anteriormente.
