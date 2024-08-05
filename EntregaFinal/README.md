@@ -82,10 +82,10 @@ Puedes utilizar los siguientes endpoints para interactuar con la API. Asegúrate
 
 Las vistas implementadas se pueden observar en `views.router.js`. Las rutas de las vistas incluyen:
 
-- **GET `/views/cart`**: Ver el contenido del carrito de compras.
-- **GET `/views/purchase`**: Confirmar la compra.
-- **GET `/views/login`**: Vista de inicio de sesión.
-- **GET `/views/register`**: Vista de registro.
+- **GET `/cart`**: Ver el contenido del carrito de compras.
+- **GET `/purchase`**: Confirmar la compra.
+- **GET `/login`**: Vista de inicio de sesión.
+- **GET `/register`**: Vista de registro.
 
 ## Herramientas Recomendadas
 
